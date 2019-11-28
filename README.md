@@ -1,0 +1,1 @@
+I am going to be attempting to create a Etch-a-sketch using mostly DOM in javascript. 
