@@ -1,3 +1,40 @@
-h1 {
-    font-size: 100px;
+#container {
+    font-size: 0;
+    position: relative;
+    padding-top:30px;
+    height:960px;
+    width:960px;
+    outline:2px solid #000;
+    margin:auto;
+    padding: 0;
+    border: none;
+}
+
+#wrap {
+    width: 60px;
+    display:block;
+    border-bottom: none;
+    margin: 20px 20px 20px 20px;
+    height: 100px;
+    position: relative;
+    top: 50%;
+    transform: translateY(150%);
+    
+}
+
+button {
+    height: 100px;
+    width: 150px;
+ }
+
+.grid {
+    margin:0;
+    padding:0;
+    border:none;
+    outline:1px solid #000;
+    display:inline-block;
+}    
+
+body{
+    background-color: rgb(36, 81, 117);
 }
