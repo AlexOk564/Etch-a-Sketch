@@ -26,6 +26,8 @@ function createGrid(x) {
 
 function defaultDraw(){
     this.style.backgroundColor = '#000000';
+    this.style.opacity = 1;
+    
 };
 
 function rgbDraw(){
@@ -58,6 +60,7 @@ newGridButton[0].addEventListener('click', function(){
 const rgbButton = document.getElementsByName('RGB');
 rgbButton[0].addEventListener('click',function(){
     for(let i = 0; i<divs.length; i++){
+        divs[i].removeEventListener('mouseover', colorIn);
         divs[i].addEventListener('mouseover', rgbDraw);
     }
 });
@@ -66,23 +69,24 @@ const blackButton = document.getElementsByName('black');
 blackButton[0].addEventListener('click',function(){
     for(let i = 0; i<divs.length; i++){
         divs[i].removeEventListener('mouseover', rgbDraw);
+        divs[i].removeEventListener('mouseover', colorIn);
         divs[i].addEventListener('mouseover', defaultDraw);
     }
 });
 
-
-function colorShade(color) {
-    const rgb = /\d\.\d/g;
-    rgb[0] -= Math.round((255 / 100) * 10);
-    rgb[1] -= Math.round((255 / 100) * 10);
-    rgb[2] -= Math.round((255 / 100) * 10);
-    return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-  }
 const darken = document.getElementsByName('darken');
 darken[0].addEventListener('click',function(e){
     for(let i = 0; i<divs.length; i++){
        divs[i].removeEventListener('mouseover', rgbDraw);
        divs[i].removeEventListener('mouseover', defaultDraw);
-       divs[i].addEventListener('mouseover', colorShade);
+       divs[i].addEventListener('mouseover', colorIn);
+      
     }
 });
+
+function colorIn() {
+    let currentOpacity = +this.style.opacity;
+    if (currentOpacity < 1) currentOpacity += 0.1;
+    this.style.opacity = `${Number(this.style.opacity) + 0.1}`;
+    this.style.backgroundColor = '#000000';
+  }
